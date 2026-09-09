@@ -3,201 +3,197 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Tekan Buddy — Your running buddy for iPhone. Coming soon.</title>
-  <meta name="description" content="Tekan Buddy is a running app for iPhone that keeps you motivated, tracks every run, and celebrates every milestone. Coming soon to the App Store.">
-  <meta property="og:title" content="Tekan Buddy — Coming soon to iPhone">
-  <meta property="og:description" content="A running app that runs with you. Coming soon to the App Store.">
+  <title>Run Buddy — your AI running trainer. Coming soon to iPhone.</title>
+  <meta name="description" content="Run Buddy is an iPhone app with an AI running trainer in your ear. Pick a trainer, press start, and they commentate live on your actual pace, distance and milestones. GPS, Apple Health, Spotify, personal records. Coming soon.">
+  <meta property="og:title" content="Run Buddy — pick a trainer, press start, get coached">
+  <meta property="og:description" content="An AI running trainer that talks to you while you run. Coming soon to iPhone.">
+  <meta property="og:image" content="icon.png">
   <meta property="og:type" content="website">
-  <meta name="theme-color" content="#0b0f14">
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230b0f14'/%3E%3Cpath d='M18 44 L30 20 L38 34 L46 26' fill='none' stroke='%2334f5a4' stroke-width='6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+  <meta name="theme-color" content="#f5efe2">
+  <link rel="icon" href="icon.png" type="image/png">
+  <link rel="apple-touch-icon" href="icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700;9..144,900&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg: #0b0f14;
-      --bg-2: #111821;
-      --fg: #f3f6f9;
-      --muted: #9aa7b5;
-      --accent: #34f5a4;
-      --accent-2: #2dd4ff;
-      --card: rgba(255, 255, 255, 0.04);
-      --border: rgba(255, 255, 255, 0.10);
-      --radius: 18px;
+      --bg: #f5efe2;
+      --bg-elevated: #efe6d5;
+      --bg-elevated-2: #e9dec9;
+      --ink: #211c15;
+      --label-2: #5a5142;
+      --label-3: #6d6350;
+      --separator: #cdc1a9;
+      --separator-strong: #b6a988;
+      --accent: #bb3b22;
+      --accent-deep: #8f2c18;
+      --on-accent: #f5efe2;
+      --yellow: #f7c948;
+      --green: #3f7d3f;
+      --blue: #2f5d8c;
+      --shadow: rgba(40, 30, 15, 0.12);
+      --radius: 4px;
+      --ff-display: "Fraunces", Georgia, "Times New Roman", serif;
+      --ff-body: "Newsreader", Georgia, "Times New Roman", serif;
+      --ff-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+      --grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.05'/%3E%3C/svg%3E");
     }
     * { box-sizing: border-box; }
     html { scroll-behavior: smooth; }
     body {
-      margin: 0;
-      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Inter, Roboto, Helvetica, Arial, sans-serif;
-      background: var(--bg);
-      color: var(--fg);
-      line-height: 1.55;
-      -webkit-font-smoothing: antialiased;
-      overflow-x: hidden;
+      margin: 0; background: var(--bg); color: var(--ink);
+      font-family: var(--ff-body); font-size: 18px; line-height: 1.5;
+      -webkit-font-smoothing: antialiased; overflow-x: hidden;
     }
+    body::before { content: ""; position: fixed; inset: 0; background: var(--grain); pointer-events: none; z-index: 0; }
     a { color: inherit; }
+    .container { width: min(1120px, 92vw); margin: 0 auto; position: relative; z-index: 1; }
+    .mono { font-family: var(--ff-mono); font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: var(--label-2); }
 
-    .glow {
-      position: fixed; inset: 0; z-index: -1; pointer-events: none;
-      background:
-        radial-gradient(60vw 60vw at 85% -10%, rgba(52, 245, 164, 0.18), transparent 60%),
-        radial-gradient(50vw 50vw at -10% 100%, rgba(45, 212, 255, 0.14), transparent 60%);
-    }
+    header { display: flex; align-items: center; justify-content: space-between; padding: 22px 0; border-bottom: 1px solid var(--separator); }
+    .brand { display: flex; align-items: center; gap: 12px; white-space: nowrap; text-decoration: none; font-family: var(--ff-display); font-weight: 700; font-size: 22px; letter-spacing: -0.01em; }
+    .brand img { width: 40px; height: 40px; border-radius: 9px; box-shadow: 0 2px 6px var(--shadow); }
+    .pill { display: inline-flex; align-items: center; gap: 8px; padding: 6px 12px; border-radius: 999px; border: 1px solid var(--separator-strong); background: var(--bg-elevated); font-family: var(--ff-mono); font-size: 12px; letter-spacing: .06em; text-transform: uppercase; color: var(--label-2); }
+    .pill .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--accent); animation: pulse 2s infinite; }
+    @keyframes pulse { 0%,100% { opacity: 1; } 50% { opacity: .3; } }
 
-    .container { width: min(1100px, 92vw); margin: 0 auto; }
+    /* Hero */
+    .hero { display: grid; grid-template-columns: 1.15fr .85fr; gap: 56px; align-items: center; padding: 72px 0 64px; }
+    h1 { font-family: var(--ff-display); font-weight: 900; font-size: clamp(44px, 6.4vw, 84px); line-height: .98; letter-spacing: -0.035em; margin: 16px 0 22px; font-variation-settings: "opsz" 144; }
+    h1 em { font-style: italic; font-weight: 500; color: var(--accent); }
+    .lead { font-size: clamp(19px, 2.1vw, 23px); color: var(--label-2); max-width: 50ch; margin: 0 0 30px; }
+    .lead strong { color: var(--ink); font-weight: 500; }
 
-    header {
-      display: flex; align-items: center; justify-content: space-between;
-      padding: 22px 0;
-    }
-    .brand { display: flex; align-items: center; gap: 10px; font-weight: 700; letter-spacing: -0.01em; text-decoration: none; }
-    .brand svg { width: 32px; height: 32px; }
-    .pill {
-      display: inline-flex; align-items: center; gap: 8px;
-      padding: 6px 12px; border-radius: 999px;
-      border: 1px solid var(--border); background: var(--card);
-      font-size: 13px; color: var(--muted);
-    }
-    .pill .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 12px var(--accent); animation: pulse 2s infinite; }
-    @keyframes pulse { 0%,100% { opacity: 1; } 50% { opacity: 0.35; } }
+    form.notify { display: flex; gap: 10px; max-width: 480px; flex-wrap: wrap; }
+    form.notify input { flex: 1 1 220px; min-width: 0; padding: 14px 16px; border-radius: var(--radius); border: 1px solid var(--separator-strong); background: #fff9ec; color: var(--ink); font: 500 17px var(--ff-body); outline: none; }
+    form.notify input:focus { border-color: var(--accent); box-shadow: 0 0 0 3px rgba(187,59,34,.18); }
+    .btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; padding: 14px 22px; border-radius: var(--radius); border: 1px solid var(--accent-deep); cursor: pointer; text-decoration: none; background: var(--accent); color: var(--on-accent); font: 600 14px var(--ff-mono); letter-spacing: .08em; text-transform: uppercase; transition: transform .15s ease, background .15s ease; }
+    .btn:hover { transform: translateY(-1px); background: var(--accent-deep); }
+    .form-note { font-size: 15px; color: var(--label-3); margin-top: 10px; }
+    .form-success { display: none; margin-top: 12px; color: var(--green); font-weight: 500; }
+    .store { display: inline-flex; align-items: center; gap: 12px; margin-top: 30px; padding: 10px 16px; border-radius: var(--radius); border: 1px solid var(--separator-strong); background: var(--bg-elevated); color: var(--label-2); }
+    .store svg { width: 22px; height: 22px; fill: var(--ink); }
+    .store strong { color: var(--ink); display: block; font-size: 17px; line-height: 1.1; font-family: var(--ff-display); }
+    .store small { display: block; font-family: var(--ff-mono); font-size: 10px; letter-spacing: .1em; text-transform: uppercase; }
 
-    .hero {
-      display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 48px; align-items: center;
-      padding: 56px 0 72px;
-    }
-    h1 {
-      font-size: clamp(40px, 6vw, 68px); line-height: 1.02; letter-spacing: -0.03em;
-      margin: 18px 0 18px; font-weight: 800;
-    }
-    h1 .grad {
-      background: linear-gradient(90deg, var(--accent), var(--accent-2));
-      -webkit-background-clip: text; background-clip: text; color: transparent;
-    }
-    .lead { font-size: clamp(17px, 2vw, 20px); color: var(--muted); max-width: 52ch; margin: 0 0 30px; }
-
-    form.notify { display: flex; gap: 10px; max-width: 460px; flex-wrap: wrap; }
-    form.notify input {
-      flex: 1 1 220px; min-width: 0;
-      padding: 14px 16px; border-radius: 12px;
-      border: 1px solid var(--border); background: var(--bg-2); color: var(--fg);
-      font-size: 16px; outline: none;
-    }
-    form.notify input:focus { border-color: var(--accent); box-shadow: 0 0 0 3px rgba(52,245,164,0.2); }
-    .btn {
-      padding: 14px 20px; border-radius: 12px; border: 0; cursor: pointer;
-      background: var(--accent); color: #05261a; font-weight: 700; font-size: 16px;
-      transition: transform .15s ease, filter .15s ease;
-    }
-    .btn:hover { transform: translateY(-1px); filter: brightness(1.05); }
-    .form-note { font-size: 13px; color: var(--muted); margin-top: 10px; }
-    .form-success { display: none; margin-top: 12px; color: var(--accent); font-weight: 600; }
-
-    .store {
-      display: inline-flex; align-items: center; gap: 10px; margin-top: 28px;
-      padding: 10px 16px; border-radius: 12px; border: 1px solid var(--border); background: var(--card);
-      color: var(--muted); font-size: 14px;
-    }
-    .store svg { width: 20px; height: 20px; fill: var(--fg); }
-    .store strong { color: var(--fg); display: block; font-size: 15px; line-height: 1.1; }
-    .store small { display: block; font-size: 11px; letter-spacing: .04em; text-transform: uppercase; }
-
-    /* Phone mockup */
+    /* Phone */
     .phone-wrap { display: flex; justify-content: center; perspective: 1400px; }
-    .phone {
-      width: 300px; height: 620px; border-radius: 48px;
-      background: #0a0a0c; border: 8px solid #1c1f24; position: relative;
-      box-shadow: 0 40px 100px rgba(0,0,0,0.6), 0 0 0 1px rgba(255,255,255,0.05), inset 0 0 0 2px #0a0a0c;
-      transform: rotateY(-10deg) rotateX(4deg);
-      animation: float 6s ease-in-out infinite;
-    }
-    @keyframes float { 0%,100% { transform: rotateY(-10deg) rotateX(4deg) translateY(0);} 50% { transform: rotateY(-10deg) rotateX(4deg) translateY(-10px);} }
+    .phone { width: 300px; height: 630px; border-radius: 48px; background: #0a0a0c; border: 8px solid #1c1f24; position: relative; box-shadow: 0 40px 90px rgba(40,30,15,.35), 0 0 0 1px rgba(0,0,0,.2); transform: rotateY(-9deg) rotateX(3deg); animation: float 6s ease-in-out infinite; }
+    @keyframes float { 0%,100% { transform: rotateY(-9deg) rotateX(3deg) translateY(0);} 50% { transform: rotateY(-9deg) rotateX(3deg) translateY(-10px);} }
     .phone .island { position: absolute; top: 14px; left: 50%; transform: translateX(-50%); width: 100px; height: 28px; background: #000; border-radius: 20px; z-index: 2; }
-    .screen {
-      position: absolute; inset: 0; border-radius: 40px; overflow: hidden;
-      background: linear-gradient(180deg, #0f1620 0%, #0b0f14 100%);
-      padding: 60px 22px 24px; display: flex; flex-direction: column; gap: 18px;
-    }
-    .screen .top { display: flex; justify-content: space-between; align-items: center; color: var(--muted); font-size: 12px; }
-    .screen .label { font-size: 12px; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); }
-    .screen .big { font-size: 46px; font-weight: 800; letter-spacing: -0.03em; line-height: 1; }
-    .screen .big span { font-size: 16px; color: var(--muted); font-weight: 500; margin-left: 6px; letter-spacing: 0; }
-    .stats { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
-    .stat { background: var(--card); border: 1px solid var(--border); border-radius: 14px; padding: 12px; }
-    .stat .v { font-size: 20px; font-weight: 700; }
-    .stat .k { font-size: 11px; color: var(--muted); }
-    .route { flex: 1; min-height: 110px; border-radius: 16px; background: var(--card); border: 1px solid var(--border); position: relative; overflow: hidden; }
+    .screen { position: absolute; inset: 0; border-radius: 40px; overflow: hidden; background: var(--bg); color: var(--ink); padding: 58px 20px 22px; display: flex; flex-direction: column; gap: 14px; }
+    .screen::before { content: ""; position: absolute; inset: 0; background: var(--grain); pointer-events: none; }
+    .screen .top { display: flex; justify-content: space-between; font-family: var(--ff-mono); font-size: 11px; color: var(--label-3); }
+    .trainer { display: flex; align-items: center; gap: 10px; background: var(--bg-elevated); border: 1px solid var(--separator); border-radius: var(--radius); padding: 10px 12px; border-left: 4px solid #A8391E; }
+    .trainer .avatar { width: 34px; height: 34px; border-radius: 50%; background: #fff9ec; border: 1px solid var(--separator-strong); display: grid; place-items: center; font-size: 18px; }
+    .trainer .name { font-family: var(--ff-display); font-weight: 700; font-size: 15px; line-height: 1.1; white-space: nowrap; }
+    .trainer .sub { font-family: var(--ff-mono); font-size: 10px; letter-spacing: .06em; text-transform: uppercase; color: var(--label-3); }
+    .trainer .live { margin-left: auto; color: #A8391E; font-family: var(--ff-mono); font-size: 10px; font-weight: 600; letter-spacing: .1em; }
+    .big { font-family: var(--ff-display); font-weight: 900; font-size: 54px; line-height: 1; letter-spacing: -0.04em; }
+    .big span { font-family: var(--ff-mono); font-size: 13px; letter-spacing: .08em; color: var(--label-3); margin-left: 6px; }
+    .stats { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px; }
+    .stat { border-top: 2px solid var(--ink); padding-top: 6px; }
+    .stat .v { font-family: var(--ff-mono); font-size: 15px; font-weight: 600; }
+    .stat .k { font-family: var(--ff-mono); font-size: 9px; letter-spacing: .1em; text-transform: uppercase; color: var(--label-3); }
+    .route { flex: 1; min-height: 80px; border: 1px solid var(--separator); border-radius: var(--radius); background: var(--bg-elevated); overflow: hidden; }
     .route svg { width: 100%; height: 100%; }
     .route path.track { fill: none; stroke: var(--accent); stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 600; stroke-dashoffset: 600; animation: draw 4s ease-out forwards infinite; }
     @keyframes draw { 0% { stroke-dashoffset: 600; } 70%,100% { stroke-dashoffset: 0; } }
-    .route path.faint { fill: none; stroke: rgba(255,255,255,0.08); stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; }
-    .buddy {
-      background: linear-gradient(90deg, rgba(52,245,164,0.18), rgba(45,212,255,0.14));
-      border: 1px solid rgba(52,245,164,0.3); border-radius: 14px; padding: 12px 14px; font-size: 13px;
-    }
-    .buddy b { color: var(--accent); }
+    .route path.faint { fill: none; stroke: var(--separator-strong); stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; }
+    .say { background: var(--ink); color: var(--bg); border-radius: var(--radius); padding: 10px 12px; font-size: 13px; line-height: 1.4; font-style: italic; }
+    .say b { font-style: normal; color: var(--yellow); font-family: var(--ff-mono); font-size: 10px; letter-spacing: .08em; text-transform: uppercase; display: block; margin-bottom: 2px; }
+    .music { display: flex; align-items: center; gap: 8px; font-family: var(--ff-mono); font-size: 10px; letter-spacing: .04em; color: var(--label-3); }
+    .music .bars { display: flex; gap: 3px; align-items: flex-end; height: 12px; }
+    .music .bars i { width: 3px; background: #1db954; border-radius: 1px; animation: eq 1s ease-in-out infinite; }
+    .music .bars i:nth-child(1){height:60%} .music .bars i:nth-child(2){height:100%;animation-delay:.2s} .music .bars i:nth-child(3){height:40%;animation-delay:.4s} .music .bars i:nth-child(4){height:80%;animation-delay:.1s}
+    @keyframes eq { 0%,100%{transform:scaleY(1)} 50%{transform:scaleY(.4)} }
 
-    /* Features */
-    .features { padding: 24px 0 72px; }
-    .section-title { font-size: 13px; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); margin: 0 0 22px; }
-    .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
-    .card {
-      background: var(--card); border: 1px solid var(--border); border-radius: var(--radius);
-      padding: 24px;
-    }
-    .card .icon { width: 42px; height: 42px; border-radius: 12px; display: grid; place-items: center; background: rgba(52,245,164,0.12); margin-bottom: 14px; }
-    .card .icon svg { width: 22px; height: 22px; stroke: var(--accent); fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
-    .card h3 { margin: 0 0 6px; font-size: 18px; letter-spacing: -0.01em; }
-    .card p { margin: 0; color: var(--muted); font-size: 15px; }
+    /* Sections */
+    section { padding: 56px 0; border-top: 1px solid var(--separator); }
+    .kicker { display: block; margin: 0 0 10px; }
+    h2 { font-family: var(--ff-display); font-weight: 700; font-size: clamp(30px, 3.6vw, 44px); line-height: 1.05; letter-spacing: -0.025em; margin: 0 0 14px; max-width: 24ch; }
+    .sub { color: var(--label-2); max-width: 60ch; margin: 0 0 32px; font-size: 19px; }
 
-    footer {
-      border-top: 1px solid var(--border); padding: 28px 0 40px;
-      display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap;
-      color: var(--muted); font-size: 14px;
-    }
-    footer a { color: var(--muted); text-decoration: none; }
-    footer a:hover { color: var(--fg); }
+    .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; border: 1px solid var(--separator-strong); border-radius: var(--radius); overflow: hidden; }
+    .step { padding: 26px; border-right: 1px solid var(--separator-strong); background: var(--bg-elevated); }
+    .step:last-child { border-right: 0; }
+    .step .n { font-family: var(--ff-display); font-weight: 900; font-size: 44px; line-height: 1; color: var(--accent); }
+    .step h3 { font-family: var(--ff-display); font-size: 22px; margin: 8px 0 6px; font-weight: 700; }
+    .step p { margin: 0; color: var(--label-2); font-size: 17px; }
 
-    @media (max-width: 860px) {
-      .hero { grid-template-columns: 1fr; padding: 32px 0 56px; text-align: center; }
+    .trainers { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    .tcard { background: var(--bg-elevated); border: 1px solid var(--separator); border-left: 5px solid var(--c, var(--accent)); border-radius: var(--radius); padding: 20px 20px 18px; position: relative; }
+    .tcard .emoji { font-size: 30px; line-height: 1; }
+    .tcard h3 { font-family: var(--ff-display); font-size: 22px; margin: 10px 0 4px; font-weight: 700; letter-spacing: -0.01em; }
+    .tcard p { margin: 0; color: var(--label-2); font-size: 16px; font-style: italic; }
+    .tcard .tag { position: absolute; top: 16px; right: 16px; font-family: var(--ff-mono); font-size: 10px; letter-spacing: .08em; text-transform: uppercase; padding: 3px 7px; border-radius: 999px; border: 1px solid var(--c, var(--accent)); color: var(--c, var(--accent)); }
+    .duo { margin-top: 16px; padding: 18px 22px; border: 1px dashed var(--separator-strong); border-radius: var(--radius); display: flex; align-items: center; gap: 14px; flex-wrap: wrap; color: var(--label-2); font-size: 17px; }
+    .duo b { color: var(--ink); font-family: var(--ff-display); font-size: 19px; }
+    .warn { margin-top: 18px; font-size: 15px; color: var(--label-3); }
+
+    .features { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px 32px; }
+    .feat { border-top: 2px solid var(--ink); padding-top: 14px; }
+    .feat h3 { font-family: var(--ff-display); font-size: 21px; margin: 0 0 6px; font-weight: 700; }
+    .feat p { margin: 0; color: var(--label-2); font-size: 16.5px; }
+
+    .alongside { display: grid; grid-template-columns: 1.1fr .9fr; gap: 40px; align-items: center; background: var(--ink); color: var(--bg); border-radius: var(--radius); padding: 40px; }
+    .alongside .mono { color: var(--yellow); }
+    .alongside h2 { color: var(--bg); }
+    .alongside p { color: #bcae95; margin: 0; font-size: 18px; }
+    .logos { display: flex; flex-wrap: wrap; gap: 10px; }
+    .logos span { padding: 10px 16px; border-radius: 999px; border: 1px solid #5f5442; background: #2b251c; font-family: var(--ff-mono); font-size: 13px; }
+
+    footer { border-top: 1px solid var(--separator); padding: 28px 0 44px; display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap; color: var(--label-3); font-size: 15px; }
+    footer a { color: var(--label-2); text-decoration: none; }
+    footer a:hover { color: var(--ink); }
+
+    @media (max-width: 900px) {
+      .hero { grid-template-columns: 1fr; padding: 36px 0 48px; text-align: center; }
       .lead { margin-left: auto; margin-right: auto; }
       form.notify { margin: 0 auto; justify-content: center; }
       .phone-wrap { order: -1; }
-      .phone { width: 250px; height: 520px; transform: none; animation: none; }
-      .grid { grid-template-columns: 1fr; }
+      .phone { width: 250px; height: 540px; transform: none; animation: none; }
+      .steps { grid-template-columns: 1fr; }
+      .step { border-right: 0; border-bottom: 1px solid var(--separator-strong); }
+      .step:last-child { border-bottom: 0; }
+      .trainers, .features { grid-template-columns: 1fr 1fr; }
+      .alongside { grid-template-columns: 1fr; padding: 28px; }
     }
+    @media (max-width: 560px) { .trainers, .features { grid-template-columns: 1fr; } .pill { white-space: nowrap; font-size: 10px; padding: 5px 9px; } .brand { font-size: 19px; } .trainer .name { font-size: 13px; } .trainer .sub { display: none; } }
     @media (prefers-reduced-motion: reduce) {
-      .phone, .pill .dot, .route path.track { animation: none !important; }
+      .phone, .pill .dot, .route path.track, .music .bars i { animation: none !important; }
       .route path.track { stroke-dashoffset: 0; }
     }
   </style>
 </head>
 <body>
-  <div class="glow" aria-hidden="true"></div>
-
   <div class="container">
     <header>
-      <a class="brand" href="#" aria-label="Tekan Buddy home">
-        <svg viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="14" fill="#151b23"/><path d="M18 44 L30 20 L38 34 L46 26" fill="none" stroke="#34f5a4" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        Tekan Buddy
+      <a class="brand" href="#" aria-label="Run Buddy home">
+        <img src="icon.png" alt="" width="40" height="40">
+        Run Buddy
       </a>
-      <span class="pill"><span class="dot" aria-hidden="true"></span> Coming soon to iPhone</span>
+      <span class="pill"><span class="dot" aria-hidden="true"></span> Coming soon · iPhone</span>
     </header>
 
     <main>
-      <section class="hero">
+      <section class="hero" style="border-top:0">
         <div>
-          <span class="pill">🏃 Running app for iPhone</span>
-          <h1>Every run is better <span class="grad">with a buddy.</span></h1>
+          <span class="mono">Your AI running trainer</span>
+          <h1>Pick a trainer. Press start. <em>Get talked at.</em></h1>
           <p class="lead">
-            Tekan Buddy tracks your pace, distance and routes, then cheers you on like a friend who actually shows up at 6 a.m.
-            We're putting on the finishing touches. Be the first to know when we launch.
+            Run Buddy is an AI running coach that talks to you while you run. Your trainer commentates live on your
+            <strong>actual</strong> pace, distance and milestones, straight through your headphones.
+            GPS tracking, Apple Health sync, Spotify controls, personal records. The works.
           </p>
 
           <form class="notify" id="notify" novalidate>
-            <label for="email" class="visually-hidden" style="position:absolute;left:-9999px">Email address</label>
+            <label for="email" style="position:absolute;left:-9999px">Email address</label>
             <input id="email" type="email" name="email" placeholder="you@example.com" autocomplete="email" required>
-            <button class="btn" type="submit">Notify me</button>
+            <button class="btn" type="submit">Tell me when it's out</button>
           </form>
-          <p class="form-note">No spam. One email when Tekan Buddy hits the App Store.</p>
-          <p class="form-success" id="success" role="status">You're on the list. See you at the start line! 🎉</p>
+          <p class="form-note">One email when Run Buddy hits the App Store. Nothing else.</p>
+          <p class="form-success" id="success" role="status">You're on the list. Now go run, kanina. 🎉</p>
 
           <div class="store" aria-label="Coming soon to the App Store">
             <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16.365 1.43c0 1.14-.45 2.2-1.19 3-.8.87-2.05 1.53-3.12 1.45-.14-1.1.38-2.24 1.12-3.02.82-.88 2.16-1.5 3.19-1.43zM20.9 17.3c-.55 1.26-.82 1.82-1.53 2.94-1 1.54-2.4 3.46-4.14 3.47-1.55.02-1.95-1.01-4.05-1-2.1.01-2.54 1.02-4.09 1-1.74-.02-3.07-1.75-4.07-3.29-2.79-4.31-3.08-9.36-1.36-12.05 1.22-1.9 3.15-3.02 4.96-3.02 1.84 0 3 1.02 4.53 1.02 1.48 0 2.38-1.02 4.52-1.02 1.61 0 3.32.88 4.54 2.4-3.99 2.19-3.34 7.9.69 9.55z"/></svg>
@@ -209,16 +205,17 @@
           <div class="phone">
             <div class="island"></div>
             <div class="screen">
-              <div class="top"><span>9:41</span><span>●●●</span></div>
-              <div>
-                <div class="label">Morning run</div>
-                <div class="big">5.2<span>km</span></div>
+              <div class="top"><span>9:41</span><span>GPS ● 5K TARGET</span></div>
+              <div class="trainer">
+                <div class="avatar">😤</div>
+                <div><div class="name">Angry Ah Beng</div><div class="sub">Uncensored · Hokkien</div></div>
+                <div class="live">● LIVE</div>
               </div>
+              <div class="big">3.72<span>KM</span></div>
               <div class="stats">
-                <div class="stat"><div class="v">27:14</div><div class="k">Time</div></div>
-                <div class="stat"><div class="v">5'14"</div><div class="k">Avg pace</div></div>
-                <div class="stat"><div class="v">152</div><div class="k">BPM</div></div>
-                <div class="stat"><div class="v">312</div><div class="k">Calories</div></div>
+                <div class="stat"><div class="v">19:28</div><div class="k">Time</div></div>
+                <div class="stat"><div class="v">5'14"</div><div class="k">Pace</div></div>
+                <div class="stat"><div class="v">156</div><div class="k">BPM</div></div>
               </div>
               <div class="route">
                 <svg viewBox="0 0 240 140" preserveAspectRatio="none">
@@ -226,44 +223,78 @@
                   <path class="track" d="M20 110 C 50 20, 80 130, 110 60 S 170 20, 200 90 S 230 120, 225 40"/>
                 </svg>
               </div>
-              <div class="buddy"><b>Buddy:</b> Nice negative split! One more km beats your PB. 💪</div>
+              <div class="say"><b>Ah Beng says</b>"Three quarters of your five K already. Don't slack! My grandmother with TWO walking stick also overtake you."</div>
+              <div class="music"><span class="bars"><i></i><i></i><i></i><i></i></span> SPOTIFY · NOW PLAYING</div>
             </div>
           </div>
         </div>
       </section>
 
-      <section class="features">
-        <h2 class="section-title">What's coming</h2>
-        <div class="grid">
-          <div class="card">
-            <div class="icon"><svg viewBox="0 0 24 24"><path d="M12 22s7-6 7-12a7 7 0 0 0-14 0c0 6 7 12 7 12z"/><circle cx="12" cy="10" r="2.5"/></svg></div>
-            <h3>Precise GPS tracking</h3>
-            <p>Distance, pace, splits and elevation, mapped in real time and synced with Apple Health.</p>
+      <section id="how">
+        <span class="kicker mono">How it works</span>
+        <h2>Headphones in. Trainer on. Every step gets a comment.</h2>
+        <div class="steps">
+          <div class="step"><div class="n">1</div><h3>Pick a trainer</h3><p>Warm and encouraging, playful, or a full-volume Hokkien scolding. Your call. There's even a duo mode where two of them argue about you.</p></div>
+          <div class="step"><div class="n">2</div><h3>Press start</h3><p>Set a distance, time or pace target if you like. Lock the phone, put it in your pocket, and go.</p></div>
+          <div class="step"><div class="n">3</div><h3>Get coached, live</h3><p>Your trainer reacts to what's actually happening: your pace, each kilometre, your splits, and the moment you beat a personal record.</p></div>
+        </div>
+      </section>
+
+      <section id="trainers">
+        <span class="kicker mono">Meet the trainers</span>
+        <h2>Six voices. Some of them very, very rude.</h2>
+        <p class="sub">Every trainer is a distinct personality with its own voice. Some are extremely vulgar, in full, uncensored Hokkien. You've been warned.</p>
+        <div class="trainers">
+          <div class="tcard" style="--c:#A8391E"><span class="tag">18+ · Hokkien</span><div class="emoji">😤</div><h3>Angry Ah Beng</h3><p>Extremely vulgar. You have been warned.</p></div>
+          <div class="tcard" style="--c:#1E7FA8"><span class="tag">18+ · Hokkien</span><div class="emoji">🤩</div><h3>Positive Ah Beng</h3><p>Same mouth, zero anger. Your loudest fan.</p></div>
+          <div class="tcard" style="--c:#7B4FA0"><span class="tag">18+ · Hokkien</span><div class="emoji">💅</div><h3>Ah Lian</h3><p>Ah Beng's equal. Zero patience.</p></div>
+          <div class="tcard" style="--c:#3F6B4A"><span class="tag">18+ · Hokkien</span><div class="emoji">💸</div><h3>Ah Long the Loan Shark</h3><p>You owe him money. He's right behind you.</p></div>
+          <div class="tcard" style="--c:#A87722"><div class="emoji">🌟</div><h3>Coach Christine</h3><p>Warm, relentless encouragement.</p></div>
+          <div class="tcard" style="--c:#B8496E"><div class="emoji">💋</div><h3>Coach Cassie</h3><p>Playful, teasing, a little too charming.</p></div>
+        </div>
+        <div class="duo"><span style="font-size:26px">😤💅</span><b>Duo mode: Ah Beng + Ah Lian.</b> They coach you, they argue, you run.</div>
+        <p class="warn">The uncensored trainers are opt-in and clearly labelled. Profanity is aimed at your pace, never at anyone's race, religion or identity.</p>
+      </section>
+
+      <section id="features">
+        <span class="kicker mono">The works</span>
+        <h2>A proper running app underneath the shouting.</h2>
+        <div class="features">
+          <div class="feat"><h3>Live GPS tracking</h3><p>Distance, pace, speed and your route on a map. Kilometre splits and your fastest split, every run.</p></div>
+          <div class="feat"><h3>Apple Health sync</h3><p>Heart rate and active calories read from Apple Health during the run, and your workouts saved to your own history.</p></div>
+          <div class="feat"><h3>Spotify controls</h3><p>Connect Spotify and control what's playing from the run screen. The trainer talks over the music, not instead of it.</p></div>
+          <div class="feat"><h3>Personal records</h3><p>Your fastest 1K, 5K and 10K, tracked automatically and called out the moment you beat them. Lifetime stats included.</p></div>
+          <div class="feat"><h3>Targets and auto-pause</h3><p>Set a distance, time or pace target. Progress call-outs at every milestone. Auto-pause when you stop at the lights.</p></div>
+          <div class="feat"><h3>Friends and shoutouts</h3><p>Follow friends, see their runs in a feed, and send a shoutout that their trainer reads out mid-run.</p></div>
+          <div class="feat"><h3>Background audio</h3><p>Lock the phone and keep it in your pocket. The commentary keeps coming.</p></div>
+          <div class="feat"><h3>Treadmill mode</h3><p>No GPS indoors? Run to a time target and your trainer still keeps you company.</p></div>
+          <div class="feat"><h3>Coach chatter dial</h3><p>Turn the talking up or down. From the occasional check-in to non-stop commentary.</p></div>
+        </div>
+      </section>
+
+      <section id="alongside">
+        <div class="alongside">
+          <div>
+            <span class="kicker mono">📱 Keep what you already use</span>
+            <h2>It's the voice in your ear, not a new tracker.</h2>
+            <p>Run Buddy runs happily alongside Strava, Apple Watch, Garmin, WHOOP, anything. It saves its own run history too, but your usual tracker stays your usual tracker.</p>
           </div>
-          <div class="card">
-            <div class="icon"><svg viewBox="0 0 24 24"><path d="M4 20h16"/><path d="M6 16l4-8 4 5 4-9"/></svg></div>
-            <h3>A buddy that motivates</h3>
-            <p>Live encouragement, smart goals and honest feedback tuned to how you actually run.</p>
-          </div>
-          <div class="card">
-            <div class="icon"><svg viewBox="0 0 24 24"><path d="M8 21h8"/><path d="M12 17v4"/><path d="M7 4h10v4a5 5 0 0 1-10 0z"/><path d="M17 5h3v2a3 3 0 0 1-3 3"/><path d="M7 5H4v2a3 3 0 0 0 3 3"/></svg></div>
-            <h3>Milestones worth chasing</h3>
-            <p>Streaks, badges and personal bests that make every run count, from first 1K to marathon day.</p>
+          <div class="logos" aria-label="Works alongside">
+            <span>Strava</span><span>Apple Watch</span><span>Garmin</span><span>WHOOP</span><span>Nike Run Club</span><span>Anything else</span>
           </div>
         </div>
       </section>
     </main>
 
     <footer>
-      <span>© <span id="year"></span> Tekan Buddy. All rights reserved.</span>
+      <span>© <span id="year"></span> Run Buddy. Made in Singapore, lah.</span>
       <span><a href="mailto:hello@tekanbuddy.com">hello@tekanbuddy.com</a></span>
     </footer>
   </div>
 
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
-
-    // Placeholder sign-up: no backend yet. Swap this handler for your mailing-list
+    // Placeholder sign-up: no backend yet. Swap this handler for a mailing-list
     // provider (Mailchimp, ConvertKit, Formspree, etc.) when ready.
     var form = document.getElementById('notify');
     form.addEventListener('submit', function (e) {
