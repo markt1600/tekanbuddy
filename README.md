@@ -5,6 +5,8 @@ talks to you while you run. Coming soon to iPhone.
 
 - `index.html` — the whole site. No build step, no dependencies.
 - `icon.png` — the app icon, used as favicon and in the header.
+- `media/run-buddy-promo-web.mp4` — the promo video, re-encoded for the web (H.264, 960x960, ~5 MB).
+- `media/run-buddy-promo-poster.jpg` — poster frame shown before the video plays.
 
 ## Preview locally
 
@@ -17,6 +19,15 @@ python3 -m http.server 8000
 
 Any static host works (GitHub Pages, Netlify, Vercel, Cloudflare Pages). For GitHub Pages,
 serve from the repository root on the branch you publish.
+
+## Updating the promo video
+
+Re-encode a new master with ffmpeg so the page stays light, then replace both files in `media/`:
+
+```sh
+ffmpeg -i promo-master.mp4 -c:v libx264 -preset slow -crf 23 -pix_fmt yuv420p -movflags +faststart -c:a aac -b:a 128k media/run-buddy-promo-web.mp4
+ffmpeg -ss 1.5 -i promo-master.mp4 -frames:v 1 -q:v 3 media/run-buddy-promo-poster.jpg
+```
 
 ## To do
 
