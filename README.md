@@ -5,6 +5,7 @@ talks to you while you run. Coming soon to iPhone.
 
 - `index.html` — the whole site. No build step, no dependencies.
 - `icon.png` — the app icon, used as favicon and in the header.
+- `og-image.jpg` — the 1200x630 link-preview card shown when the URL is shared on WhatsApp, iMessage, Telegram, Slack or X. Referenced by absolute URL in the `og:image` tags, so update those if the site moves to a custom domain.
 - `media/run-buddy-promo-web.mp4` — the promo video, re-encoded for the web (H.264, 960x960, ~5 MB).
 - `media/run-buddy-promo-poster.jpg` — poster frame shown before the video plays.
 
