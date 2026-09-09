@@ -3,24 +3,24 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Run Buddy — your AI running trainer. Coming soon to iPhone.</title>
-  <meta name="description" content="Run Buddy is an iPhone app with an AI running trainer in your ear. Pick a trainer, press start, and they commentate live on your actual pace, distance and milestones. GPS, Apple Health, Spotify, personal records. Coming soon.">
+  <title>Run Buddy — your AI running trainer. Now in beta on iPhone.</title>
+  <meta name="description" content="Run Buddy is an iPhone app with an AI running trainer in your ear. Pick a trainer, press start, and they commentate live on your actual pace, distance and milestones. GPS, Apple Health, Spotify, personal records. Try the beta on TestFlight.">
   <!-- Link preview (WhatsApp, iMessage, Telegram, Slack, X). og:image must be an absolute URL:
        update SITE_URL below if the site moves to a custom domain. -->
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Run Buddy">
   <meta property="og:url" content="https://tekanbuddy.com/">
   <meta property="og:title" content="Run Buddy — pick a trainer, press start, get talked at">
-  <meta property="og:description" content="An AI running trainer in your ear. Live commentary on your actual pace, distance and milestones. Some trainers are extremely vulgar, in full uncensored Hokkien. Coming soon to iPhone.">
+  <meta property="og:description" content="An AI running trainer in your ear. Live commentary on your actual pace, distance and milestones. Some trainers are extremely vulgar, in full uncensored Hokkien. Try the beta on TestFlight.">
   <meta property="og:image" content="https://tekanbuddy.com/og-image.jpg">
   <meta property="og:image:secure_url" content="https://tekanbuddy.com/og-image.jpg">
   <meta property="og:image:type" content="image/jpeg">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
-  <meta property="og:image:alt" content="Run Buddy: pick a trainer, press start, get talked at. Coming soon to iPhone.">
+  <meta property="og:image:alt" content="Run Buddy: pick a trainer, press start, get talked at. Now in beta on TestFlight.">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Run Buddy — pick a trainer, press start, get talked at">
-  <meta name="twitter:description" content="An AI running trainer in your ear. Coming soon to iPhone.">
+  <meta name="twitter:description" content="An AI running trainer in your ear. Try the beta on TestFlight.">
   <meta name="twitter:image" content="https://tekanbuddy.com/og-image.jpg">
   <meta name="theme-color" content="#f5efe2">
   <link rel="icon" href="icon.png" type="image/png">
@@ -77,17 +77,16 @@
     .lead { font-size: clamp(19px, 2.1vw, 23px); color: var(--label-2); max-width: 50ch; margin: 0 0 30px; }
     .lead strong { color: var(--ink); font-weight: 500; }
 
-    form.notify { display: flex; gap: 10px; max-width: 480px; flex-wrap: wrap; }
-    form.notify input { flex: 1 1 220px; min-width: 0; padding: 14px 16px; border-radius: var(--radius); border: 1px solid var(--separator-strong); background: #fff9ec; color: var(--ink); font: 500 17px var(--ff-body); outline: none; }
-    form.notify input:focus { border-color: var(--accent); box-shadow: 0 0 0 3px rgba(187,59,34,.18); }
-    .btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; padding: 14px 22px; border-radius: var(--radius); border: 1px solid var(--accent-deep); cursor: pointer; text-decoration: none; background: var(--accent); color: var(--on-accent); font: 600 14px var(--ff-mono); letter-spacing: .08em; text-transform: uppercase; transition: transform .15s ease, background .15s ease; }
+    .cta { display: flex; flex-wrap: wrap; align-items: center; gap: 14px; }
+    .btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; padding: 16px 24px; border-radius: var(--radius); border: 1px solid var(--accent-deep); cursor: pointer; text-decoration: none; background: var(--accent); color: var(--on-accent); font: 600 15px var(--ff-mono); letter-spacing: .08em; text-transform: uppercase; transition: transform .15s ease, background .15s ease; }
     .btn:hover { transform: translateY(-1px); background: var(--accent-deep); }
-    .form-note { font-size: 15px; color: var(--label-3); margin-top: 10px; }
-    .form-success { display: none; margin-top: 12px; color: var(--green); font-weight: 500; }
-    .store { display: inline-flex; align-items: center; gap: 12px; margin-top: 30px; padding: 10px 16px; border-radius: var(--radius); border: 1px solid var(--separator-strong); background: var(--bg-elevated); color: var(--label-2); }
-    .store svg { width: 22px; height: 22px; fill: var(--ink); }
-    .store strong { color: var(--ink); display: block; font-size: 17px; line-height: 1.1; font-family: var(--ff-display); }
-    .store small { display: block; font-family: var(--ff-mono); font-size: 10px; letter-spacing: .1em; text-transform: uppercase; }
+    .btn svg { width: 20px; height: 20px; fill: currentColor; }
+    .install { margin: 26px 0 0; padding: 0 0 0 26px; max-width: 52ch; color: var(--label-2); font-size: 17px; }
+    .install li { margin: 0 0 8px; padding-left: 4px; }
+    .install li::marker { font-family: var(--ff-mono); font-weight: 600; color: var(--accent); }
+    .install b { color: var(--ink); font-weight: 500; }
+    .install a { color: var(--accent); text-decoration-thickness: 1px; text-underline-offset: 3px; }
+    .form-note { font-size: 15px; color: var(--label-3); margin-top: 14px; font-family: var(--ff-mono); font-size: 12px; letter-spacing: .06em; text-transform: uppercase; }
 
     /* Phone */
     .phone-wrap { display: flex; justify-content: center; perspective: 1400px; }
@@ -177,7 +176,8 @@
     @media (max-width: 900px) {
       .hero { grid-template-columns: 1fr; padding: 36px 0 48px; text-align: center; }
       .lead { margin-left: auto; margin-right: auto; }
-      form.notify { margin: 0 auto; justify-content: center; }
+      .cta { justify-content: center; }
+      .install { text-align: left; margin-left: auto; margin-right: auto; }
       .phone-wrap { order: -1; }
       .phone { width: 250px; height: 540px; transform: none; animation: none; }
       .steps { grid-template-columns: 1fr; }
@@ -202,7 +202,7 @@
         <img src="icon.png" alt="" width="40" height="40">
         Run Buddy
       </a>
-      <span class="pill"><span class="dot" aria-hidden="true"></span> Coming soon · iPhone</span>
+      <a class="pill" href="https://testflight.apple.com/join/qvbR49uf" target="_blank" rel="noopener" style="text-decoration:none"><span class="dot" aria-hidden="true"></span> Now in beta · TestFlight</a>
     </header>
 
     <main>
@@ -216,18 +216,18 @@
             GPS tracking, Apple Health sync, Spotify controls, personal records. The works.
           </p>
 
-          <form class="notify" id="notify" novalidate>
-            <label for="email" style="position:absolute;left:-9999px">Email address</label>
-            <input id="email" type="email" name="email" placeholder="you@example.com" autocomplete="email" required>
-            <button class="btn" type="submit">Tell me when it's out</button>
-          </form>
-          <p class="form-note">One email when Run Buddy hits the App Store. Nothing else.</p>
-          <p class="form-success" id="success" role="status">You're on the list. Now go run, kanina. 🎉</p>
-
-          <div class="store" aria-label="Coming soon to the App Store">
-            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16.365 1.43c0 1.14-.45 2.2-1.19 3-.8.87-2.05 1.53-3.12 1.45-.14-1.1.38-2.24 1.12-3.02.82-.88 2.16-1.5 3.19-1.43zM20.9 17.3c-.55 1.26-.82 1.82-1.53 2.94-1 1.54-2.4 3.46-4.14 3.47-1.55.02-1.95-1.01-4.05-1-2.1.01-2.54 1.02-4.09 1-1.74-.02-3.07-1.75-4.07-3.29-2.79-4.31-3.08-9.36-1.36-12.05 1.22-1.9 3.15-3.02 4.96-3.02 1.84 0 3 1.02 4.53 1.02 1.48 0 2.38-1.02 4.52-1.02 1.61 0 3.32.88 4.54 2.4-3.99 2.19-3.34 7.9.69 9.55z"/></svg>
-            <span><small>Coming soon on the</small><strong>App Store</strong></span>
+          <div class="cta">
+            <a class="btn" href="https://testflight.apple.com/join/qvbR49uf" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16.365 1.43c0 1.14-.45 2.2-1.19 3-.8.87-2.05 1.53-3.12 1.45-.14-1.1.38-2.24 1.12-3.02.82-.88 2.16-1.5 3.19-1.43zM20.9 17.3c-.55 1.26-.82 1.82-1.53 2.94-1 1.54-2.4 3.46-4.14 3.47-1.55.02-1.95-1.01-4.05-1-2.1.01-2.54 1.02-4.09 1-1.74-.02-3.07-1.75-4.07-3.29-2.79-4.31-3.08-9.36-1.36-12.05 1.22-1.9 3.15-3.02 4.96-3.02 1.84 0 3 1.02 4.53 1.02 1.48 0 2.38-1.02 4.52-1.02 1.61 0 3.32.88 4.54 2.4-3.99 2.19-3.34 7.9.69 9.55z"/></svg>
+              Try it on TestFlight 👉
+            </a>
           </div>
+          <ol class="install">
+            <li><b><a href="https://apps.apple.com/app/testflight/id899247664" target="_blank" rel="noopener">Install TestFlight</a></b> from the App Store if you haven't already. It's Apple's free app for beta-testing new apps.</li>
+            <li><b>Come back and tap <a href="https://testflight.apple.com/join/qvbR49uf" target="_blank" rel="noopener">the link</a> again.</b> TestFlight will install Run Buddy.</li>
+            <li><b>Feedback welcome.</b> Tell us what your trainer said to you.</li>
+          </ol>
+          <p class="form-note">Free during beta. iPhone only.</p>
         </div>
 
         <div class="phone-wrap" aria-hidden="true">
@@ -349,17 +349,6 @@
     document.getElementById('playBtn').addEventListener('click', function () { video.controls = true; video.play(); });
     video.addEventListener('play', function () { wrap.classList.add('playing'); });
     video.addEventListener('ended', function () { wrap.classList.remove('playing'); video.currentTime = 0; });
-    // Placeholder sign-up: no backend yet. Swap this handler for a mailing-list
-    // provider (Mailchimp, ConvertKit, Formspree, etc.) when ready.
-    var form = document.getElementById('notify');
-    form.addEventListener('submit', function (e) {
-      e.preventDefault();
-      var email = document.getElementById('email');
-      if (!email.checkValidity()) { email.reportValidity(); return; }
-      form.style.display = 'none';
-      document.querySelector('.form-note').style.display = 'none';
-      document.getElementById('success').style.display = 'block';
-    });
   </script>
 </body>
 </html>

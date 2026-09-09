@@ -1,7 +1,7 @@
 # Run Buddy — website
 
 A single-page site for **Run Buddy**, an iPhone app with an AI running coach that
-talks to you while you run. Coming soon to iPhone.
+talks to you while you run. Currently in beta on TestFlight.
 
 - `index.html` — the whole site. No build step, no dependencies.
 - `icon.png` — the app icon, used as favicon and in the header.
@@ -33,5 +33,4 @@ ffmpeg -ss 1.5 -i promo-master.mp4 -frames:v 1 -q:v 3 media/run-buddy-promo-post
 ## To do
 
 - Replace the placeholder contact email (`hello@tekanbuddy.com`) in the footer and feedback button.
-- Wire the "Tell me when it's out" form to a mailing-list provider (see the comment in `index.html`).
-- Add the App Store link once the app is released.
+- Swap the TestFlight link for the App Store link once the app is released.
