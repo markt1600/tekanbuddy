@@ -1,6 +1,6 @@
-# Run Buddy — website
+# Tekan Buddy — website
 
-A single-page site for **Run Buddy**, an iPhone app with an AI running coach that
+A single-page site for **Tekan Buddy**, an iPhone app with an AI running coach that
 talks to you while you run. Currently in beta on TestFlight.
 
 - `index.html` — the whole site. No build step, no dependencies.
